@@ -1,0 +1,16 @@
+{
+  "name": "proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node proxy.js & node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "anyproxy": "^4.0.10",
+    "mysql": "^2.15.0",
+    "promise-mysql": "^3.2.1"
+  }
+}

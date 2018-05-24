@@ -1,0 +1,27 @@
+doctype html
+head
+    meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
+    body
+        ul
+            each val in subscribes
+                li 
+                    a(href='https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz='+val.biz+'&scene=124&initlink#wechat_redirect') #{val.name}
+script.
+    (function(){
+        var hrefs=[];
+        if(sessionStorage.getItem("hrefs")){
+            hrefs = JSON.parse(sessionStorage.getItem("hrefs"));
+        }else{
+            document.querySelectorAll("a").forEach(function(item){
+                hrefs.push(item.getAttribute('href'));
+            });
+            hrefs.reverse();
+            sessionStorage.setItem("hrefs",JSON.stringify(hrefs));
+        }
+        if(hrefs.length>0){
+            var href = hrefs.pop();
+            sessionStorage.setItem("hrefs",JSON.stringify(hrefs));
+            location.href = href;
+        }
+    })();
+    
